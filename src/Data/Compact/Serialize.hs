@@ -38,9 +38,8 @@ instance B.Binary SomeTypeRep where
 instance (Typeable a) => B.Binary (CompactFile a) where
     get = do
         SomeTypeRep tyrep <- B.get
-        --case tyrep `eqTypeRep` typeRep @a of
-        --  Just HRefl -> CompactFile <$> getSerializedCompact
-        CompactFile <$> getSerializedCompact
+        case tyrep `eqTypeRep` typeRep @a of
+          Just HRefl -> CompactFile <$> getSerializedCompact
     put (CompactFile a) = putSerializedCompact a
 
 putPtr :: Ptr a -> B.Put
