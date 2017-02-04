@@ -1,0 +1,32 @@
+name:                compact-serialize
+version:             0.1.0.0
+synopsis:            Efficient serialization compact regions
+-- description:         
+homepage:            http://github.com/bgamari/compact-serialize
+license:             BSD3
+license-file:        LICENSE
+author:              Ben Gamari
+maintainer:          ben@smart-cactus.org
+copyright:           (c) 2017 Ben Gamari
+category:            Data
+build-type:          Simple
+extra-source-files:  ChangeLog.md
+cabal-version:       >=1.10
+
+library
+  exposed-modules:     Data.Compact.Serialize
+  other-extensions:    RankNTypes, MagicHash, ForeignFunctionInterface
+  build-depends:       base >=4.10 && <4.11,
+                       binary >=0.8 && <0.9,
+                       bytestring >=0.10 && <0.11,
+                       compact >=1.0 && <1.1
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+
+executable compact-serialize-test
+  main-is:             Test.hs
+  default-language:    Haskell2010
+  build-depends:       base >=4.10 && <4.11,
+                       binary >=0.8 && <0.9,
+                       compact >=1.0 && <1.1,
+                       compact-serialize
